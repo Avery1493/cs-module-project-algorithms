@@ -4,22 +4,18 @@ Returns: a List of integers
 '''
 import math
 def product_of_all_other_numbers(arr):
-    # Plan
-    # dont override list
     copy = arr.copy()
     index = 0
-    # loop through each index
-    for num in arr:
-        # isolate item from list
-        # [map exp] for <name> in <seq exp> if <filter exp>
-        prod = [num for num in arr if num != arr[index]]      
-        # replace value at index with product of other indexes
-        copy[index] = math.prod(prod)
-        # increase index
-        index += 1
-    # return arr
-    return copy
 
+    for num in arr:
+        prod = []
+        for i in range(0,len(arr)):
+            if i != index:
+                prod.append(arr[i])
+            if len(prod) == len(arr)-1:
+                copy[index] = math.prod(prod)
+                index += 1
+    return copy
 
 if __name__ == '__main__':
     # Use the main function to test your implementation
